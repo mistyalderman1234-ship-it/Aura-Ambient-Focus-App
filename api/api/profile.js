@@ -6,9 +6,20 @@ export default async function handler(req, res) {
   try {
     const payload = parseTokenFromCookie(req)
     if (!payload) return res.status(401).json({ error: 'unauth' })
-    const user = await prisma.user.findUnique({ where: { id: payload.sub }, select: { id: true, name: true, email: true, subscriptionStatus: true, stripeCustomerId: true, createdAt: true, trialEndsAt: true } })
+    const user = await prisma.user.findUnique({
+      where: { id: payload.sub },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        subscriptionStatus: true,
+        stripeCustomerId: true,
+        createdAt: true,
+        trialEndsAt: true,
+      },
+    })
     if (!user) return res.status(404).json({ error: 'no_user' })
-    return new Response(JSON.stringify(user), { status: 200, headers: { 'Content-Type': 'application/json' } })
+    res.status(200).json(user)
   } catch (err) {
     console.error('profile function error', err)
     return res.status(500).json({ error: 'profile_failed' })

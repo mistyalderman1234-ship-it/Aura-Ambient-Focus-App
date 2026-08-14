@@ -38,4 +38,3 @@ Security notes
 - Use HTTPS in production
 - Consider adding rate limiting and email verification
 
-If you'd like, I will open a PR with these changes (created on branch `aura/upgrade-trial-and-prod-readiness`).

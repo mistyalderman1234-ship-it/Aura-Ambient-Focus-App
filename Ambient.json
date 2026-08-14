@@ -1,0 +1,23 @@
+{
+  "id": 20580421,
+  "name": "Ambient",
+  "target": "branch",
+  "source_type": "Repository",
+  "source": "mistyalderman1234-ship-it/Aura-Ambient-Focus-App",
+  "enforcement": "active",
+  "conditions": {
+    "ref_name": {
+      "exclude": [],
+      "include": []
+    }
+  },
+  "rules": [
+    {
+      "type": "deletion"
+    },
+    {
+      "type": "non_fast_forward"
+    }
+  ],
+  "bypass_actors": []
+}
