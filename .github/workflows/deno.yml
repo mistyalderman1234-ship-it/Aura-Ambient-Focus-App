@@ -36,10 +36,11 @@ jobs:
       #   run: deno fmt --check
 
       - name: Auto-fix linter issues
-        run: deno lint --fix
+        # Ensure deno lints files in the repository root (avoid "No target files found.")
+        run: deno lint --fix .
 
       - name: Verify linting
-        run: deno lint
+        run: deno lint .
 
       - name: Run tests
         run: deno test -A
